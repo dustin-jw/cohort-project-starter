@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "NODE_ENV=development webpack -w",
-    "build": "NODE_ENV=production webpack"
+    "prestart": "docker-compose build",
+    "start": "docker-compose up",
+    "build": "NODE_ENV=production webpack",
+    "serve": "node dist/index.js"
   },
   "keywords": [],
   "author": "",
