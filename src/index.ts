@@ -1,9 +1,13 @@
-import add from './utilities/add';
-import subtract from './utilities/subtract';
-import multiply from './utilities/multiply';
-import divide from './utilities/divide';
+const express = require('express');
 
-console.log(`2 + 2 = ${add(2, 2)}`);
-console.log(`2 - 2 = ${subtract(2, 2)}`);
-console.log(`2 * 2 = ${multiply(2, 2)}`);
-console.log(`2 / 2 = ${divide(2, 2)}`);
+const PORT = 8080;
+const HOST = '0.0.0.0';
+
+const app = express();
+
+app.get('/', (request: any, response: any) => {
+  response.send('Hello World');
+});
+
+app.listen(PORT, HOST);
+console.log(`Running on http://${HOST}:${PORT}`);
