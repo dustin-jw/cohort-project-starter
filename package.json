@@ -4,11 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prestart": "docker-compose build",
-    "start": "docker-compose up",
-    "build": "NODE_ENV=production webpack",
+    "prestart": "run-s clean docker:build",
+    "start": "run-p docker:up build:watch serve:watch",
+    "docker:up": "docker-compose up",
+    "docker:build": "docker-compose build",
+    "build": "NODE_ENV=production webpack --progress",
+    "build:watch": "NODE_ENV=development webpack --progress -w",
     "serve": "node dist/server.js",
-    "lint:js": "eslint . --ext .js,.ts"
+    "serve:watch": "nodemon dist/server.js",
+    "lint:js": "eslint . --ext .js,.ts",
+    "clean": "rimraf dist"
   },
   "keywords": [],
   "author": "",
