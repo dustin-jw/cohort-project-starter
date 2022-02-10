@@ -4,7 +4,9 @@ const path = require('path');
 module.exports = {
   mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
   target: 'node',
-  entry: './src/index.ts',
+  entry: {
+    server: './src/server/index.ts',
+  },
   module: {
     rules: [
       {
@@ -21,7 +23,6 @@ module.exports = {
     ],
   },
   output: {
-    filename: 'index.js',
     path: path.resolve(__dirname, 'dist'),
   },
 };
