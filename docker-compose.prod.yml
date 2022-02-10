@@ -8,4 +8,4 @@ services:
       - 8080:8080
     volumes:
       - .:/var/www/html
-    command: npm run dev
+    command: npm run serve

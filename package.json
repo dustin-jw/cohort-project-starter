@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "prestart": "run-s clean docker:build",
-    "start": "run-p docker:up build:watch serve:watch",
+    "prestart": "run-s clean build",
+    "start": "npm run docker:up",
+    "dev": "run-p build:watch serve:watch",
     "docker:up": "docker-compose up",
+    "docker:up:prod": "docker-compose -f docker-compose.prod.yml up",
     "docker:build": "docker-compose build",
     "build": "NODE_ENV=production webpack --progress",
     "build:watch": "NODE_ENV=development webpack --progress -w",
