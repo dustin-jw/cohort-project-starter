@@ -1,12 +1,12 @@
 interface ParamsInput {
   a: string;
   b: string;
-};
+}
 
 interface ParamsOutput {
   a: number;
   b: number;
-};
+}
 
 const paramsToNumbers = (params: ParamsInput): ParamsOutput => {
   const a = Number.parseFloat(params.a);
@@ -26,4 +26,4 @@ const paramsToNumbers = (params: ParamsInput): ParamsOutput => {
   };
 };
 
-export { paramsToNumbers };
+export default paramsToNumbers;

@@ -1,6 +1,8 @@
 import express from 'express';
-import { add, subtract, multiply, divide } from './utilities/arithmetic';
-import { paramsToNumbers } from './utilities/paramsToNumbers';
+import {
+  add, subtract, multiply, divide,
+} from './utilities/arithmetic';
+import paramsToNumbers from './utilities/paramsToNumbers';
 
 const PORT = 8080;
 const HOST = '0.0.0.0';
@@ -48,4 +50,6 @@ app.get('/divide/:a/:b', (request: any, response: any) => {
 });
 
 app.listen(PORT, HOST);
+
+// eslint-disable-next-line no-console
 console.log(`Running on http://${HOST}:${PORT}`);
