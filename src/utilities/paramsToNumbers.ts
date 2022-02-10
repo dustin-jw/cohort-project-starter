@@ -1,23 +1,20 @@
-interface ParamsInput {
-  a: string;
-  b: string;
-}
+import { ParamsDictionary } from 'express-serve-static-core';
 
 interface ParamsOutput {
   a: number;
   b: number;
 }
 
-const paramsToNumbers = (params: ParamsInput): ParamsOutput => {
+const paramsToNumbers = (params: ParamsDictionary): ParamsOutput => {
   const a = Number.parseFloat(params.a);
   const b = Number.parseFloat(params.b);
 
   if (Number.isNaN(a)) {
-    throw new TypeError('a must be a number');
+    throw new Error('a must be a number');
   }
 
   if (Number.isNaN(b)) {
-    throw new TypeError('b must be a number');
+    throw new Error('b must be a number');
   }
 
   return {

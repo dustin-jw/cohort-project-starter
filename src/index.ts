@@ -1,51 +1,52 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import {
   add, subtract, multiply, divide,
 } from './utilities/arithmetic';
 import paramsToNumbers from './utilities/paramsToNumbers';
+import getErrorMessage from './utilities/getErrorMessage';
 
 const PORT = 8080;
 const HOST = '0.0.0.0';
 
 const app = express();
 
-app.get('/', (request: any, response: any) => {
+app.get('/', (request: Request, response: Response) => {
   response.send('Hello World');
 });
 
-app.get('/add/:a/:b', (request: any, response: any) => {
+app.get('/add/:a/:b', (request: Request, response: Response) => {
   try {
     const { a, b } = paramsToNumbers(request.params);
     response.send(`${a} + ${b} = ${add(a, b)}`);
-  } catch (error: any) {
-    response.status(400).send(error.message);
+  } catch (error) {
+    response.status(400).send(getErrorMessage(error));
   }
 });
 
-app.get('/subtract/:a/:b', (request: any, response: any) => {
+app.get('/subtract/:a/:b', (request: Request, response: Response) => {
   try {
     const { a, b } = paramsToNumbers(request.params);
     response.send(`${a} - ${b} = ${subtract(a, b)}`);
-  } catch (error: any) {
-    response.status(400).send(error.message);
+  } catch (error) {
+    response.status(400).send(getErrorMessage(error));
   }
 });
 
-app.get('/multiply/:a/:b', (request: any, response: any) => {
+app.get('/multiply/:a/:b', (request: Request, response: Response) => {
   try {
     const { a, b } = paramsToNumbers(request.params);
     response.send(`${a} * ${b} = ${multiply(a, b)}`);
-  } catch (error: any) {
-    response.status(400).send(error.message);
+  } catch (error) {
+    response.status(400).send(getErrorMessage(error));
   }
 });
 
-app.get('/divide/:a/:b', (request: any, response: any) => {
+app.get('/divide/:a/:b', (request: Request, response: Response) => {
   try {
     const { a, b } = paramsToNumbers(request.params);
     response.send(`${a} / ${b} = ${divide(a, b)}`);
-  } catch (error: any) {
-    response.status(400).send(error.message);
+  } catch (error) {
+    response.status(400).send(getErrorMessage(error));
   }
 });
 
