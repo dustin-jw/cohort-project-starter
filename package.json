@@ -7,7 +7,8 @@
     "prestart": "docker-compose build",
     "start": "docker-compose up",
     "build": "NODE_ENV=production webpack",
-    "serve": "node dist/index.js"
+    "serve": "node dist/index.js",
+    "lint:js": "eslint . --ext .js,.ts"
   },
   "keywords": [],
   "author": "",
