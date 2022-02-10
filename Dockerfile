@@ -1,8 +1,8 @@
 FROM node:16
 
-WORKDIR /app
+WORKDIR /var/www/html
 
-COPY . /app
+COPY . /var/www/html
 
 RUN npm ci
 RUN npm run build
