@@ -8,11 +8,11 @@ const defaultFooter = `<footer>
 
 const layout = ({
   content = '',
-  pageTitle = 'Project Starter',
+  pageTitle = 'Express Starter',
   description = 'This is the page description.',
   header = defaultHeader,
   footer = defaultFooter,
-  titleSuffix = ' | Project Starter',
+  titleSuffix = ' | Express Starter',
   lang = 'en',
   htmlAttributes = '',
   bodyAttributes = '',
