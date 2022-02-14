@@ -1,14 +1,10 @@
-const defaultHeader = `
-  <header>
-    <p>This is the header.</p>
-  </header>
-`;
+const defaultHeader = `<header>
+      <p>This is the header.</p>
+    </header>`;
 
-const defaultFooter = `
-  <footer>
-    <p>This is the footer.</p>
-  </footer>
-`;
+const defaultFooter = `<footer>
+      <p>This is the footer.</p>
+    </footer>`;
 
 const layout = ({
   content = '',
@@ -36,9 +32,7 @@ const layout = ({
   </head>
   <body ${bodyAttributes}>
     ${header}
-    <main ${mainAttributes}>
-      ${content}
-    </main>
+    <main ${mainAttributes}>${content}</main>
     ${footer}
   </body>
 </html>

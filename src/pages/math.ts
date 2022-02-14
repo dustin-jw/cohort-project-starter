@@ -4,12 +4,12 @@ import capitalize from '../js/capitalize';
 const math = (operation: 'add' | 'subtract' | 'multiply' | 'divide', equation: string): string => {
   const title = capitalize(operation);
   const content = `
-    <h1>${title}</h1>
+      <h1>${title}</h1>
 
-    <p>
-      ${equation}
-    </p>
-  `;
+      <p>
+        ${equation}
+      </p>
+    `;
 
   return layout({
     content,
