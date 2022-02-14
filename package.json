@@ -17,6 +17,7 @@
     "lint": "run-s lint:css lint:js",
     "lint:css": "stylelint 'src/scss/**/*.scss' --color --formatter verbose",
     "lint:js": "eslint . --ext .js,.ts",
+    "test": "jest --config=jest.config.js",
     "clean": "rimraf dist"
   },
   "keywords": [],
