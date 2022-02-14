@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express';
-import { home } from '../pages';
+import { home, math } from '../pages';
 import {
   add, subtract, multiply, divide,
 } from '../js/arithmetic';
@@ -18,7 +18,7 @@ app.get('/', (request: Request, response: Response) => {
 app.get('/add/:a/:b', (request: Request, response: Response) => {
   try {
     const { a, b } = paramsToNumbers(request.params);
-    response.send(`${a} + ${b} = ${add(a, b)}`);
+    response.send(math('add', `${a} + ${b} = ${add(a, b)}`));
   } catch (error) {
     response.status(400).send(getErrorMessage(error));
   }
@@ -27,7 +27,7 @@ app.get('/add/:a/:b', (request: Request, response: Response) => {
 app.get('/subtract/:a/:b', (request: Request, response: Response) => {
   try {
     const { a, b } = paramsToNumbers(request.params);
-    response.send(`${a} - ${b} = ${subtract(a, b)}`);
+    response.send(math('subtract', `${a} - ${b} = ${subtract(a, b)}`));
   } catch (error) {
     response.status(400).send(getErrorMessage(error));
   }
@@ -36,7 +36,7 @@ app.get('/subtract/:a/:b', (request: Request, response: Response) => {
 app.get('/multiply/:a/:b', (request: Request, response: Response) => {
   try {
     const { a, b } = paramsToNumbers(request.params);
-    response.send(`${a} * ${b} = ${multiply(a, b)}`);
+    response.send(math('multiply', `${a} &times; ${b} = ${multiply(a, b)}`));
   } catch (error) {
     response.status(400).send(getErrorMessage(error));
   }
@@ -45,7 +45,7 @@ app.get('/multiply/:a/:b', (request: Request, response: Response) => {
 app.get('/divide/:a/:b', (request: Request, response: Response) => {
   try {
     const { a, b } = paramsToNumbers(request.params);
-    response.send(`${a} / ${b} = ${divide(a, b)}`);
+    response.send(math('divide', `${a} &divide; ${b} = ${divide(a, b)}`));
   } catch (error) {
     response.status(400).send(getErrorMessage(error));
   }
