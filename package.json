@@ -14,6 +14,7 @@
     "build:watch": "NODE_ENV=development webpack --progress -w",
     "serve": "node dist/server.js",
     "serve:watch": "nodemon dist/server.js",
+    "lint": "run-s lint:js",
     "lint:js": "eslint . --ext .js,.ts",
     "clean": "rimraf dist"
   },
