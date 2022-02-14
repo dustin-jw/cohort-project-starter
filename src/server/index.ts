@@ -11,6 +11,8 @@ const HOST = '0.0.0.0';
 
 const app = express();
 
+app.use('/public', express.static('dist/public'));
+
 app.get('/', (request: Request, response: Response) => {
   response.send(home());
 });
