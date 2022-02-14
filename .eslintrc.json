@@ -15,5 +15,8 @@
     "plugin:@typescript-eslint/recommended",
     "airbnb-base",
     "airbnb-typescript/base"
-  ]
+  ],
+  "rules": {
+    "import/prefer-default-export": 0
+  }
 }

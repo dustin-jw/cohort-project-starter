@@ -1,4 +1,5 @@
 import express, { Request, Response } from 'express';
+import { home } from '../pages';
 import {
   add, subtract, multiply, divide,
 } from '../js/arithmetic';
@@ -11,7 +12,7 @@ const HOST = '0.0.0.0';
 const app = express();
 
 app.get('/', (request: Request, response: Response) => {
-  response.send('Hello World');
+  response.send(home());
 });
 
 app.get('/add/:a/:b', (request: Request, response: Response) => {
