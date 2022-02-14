@@ -1,13 +1,15 @@
 import layout from '../partials/layout';
 
-const home = () => {
-  const content = `
-      <h1>Hello World!</h1>
+const homePageContent = (): string => `
+  <h1>Hello World!</h1>
 
-      <p>
-        Welcome to the home page!
-      </p>
-    `;
+  <p>
+    Welcome to the home page!
+  </p>
+`;
+
+const home = () => {
+  const content = homePageContent();
 
   return layout({
     content,
@@ -16,4 +18,4 @@ const home = () => {
   });
 };
 
-export { home };
+export { home, homePageContent };

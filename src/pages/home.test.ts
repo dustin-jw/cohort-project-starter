@@ -1,8 +1,15 @@
-import { home } from '.';
-import { homePage } from '../js/test-helpers/fixtures/layout';
+import { homePageContent } from '.';
+
+const content = `
+  <h1>Hello World!</h1>
+
+  <p>
+    Welcome to the home page!
+  </p>
+`;
 
 describe('home page', () => {
   it('renders the home page correctly', () => {
-    expect(home()).toEqual(homePage);
+    expect(homePageContent()).toEqual(content);
   });
 });

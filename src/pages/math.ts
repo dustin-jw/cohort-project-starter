@@ -1,15 +1,17 @@
 import layout from '../partials/layout';
 import capitalize from '../js/capitalize';
 
+const mathPageContent = (title: string, equation: string): string => `
+  <h1>${title}</h1>
+
+  <p>
+    ${equation}
+  </p>
+`;
+
 const math = (operation: 'add' | 'subtract' | 'multiply' | 'divide', equation: string): string => {
   const title = capitalize(operation);
-  const content = `
-      <h1>${title}</h1>
-
-      <p>
-        ${equation}
-      </p>
-    `;
+  const content = mathPageContent(title, equation);
 
   return layout({
     content,
@@ -18,4 +20,4 @@ const math = (operation: 'add' | 'subtract' | 'multiply' | 'divide', equation: s
   });
 };
 
-export { math };
+export { math, mathPageContent };
