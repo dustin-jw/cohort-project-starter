@@ -7,7 +7,7 @@ module.exports = {
   target: 'node',
   entry: {
     server: './src/server/index.ts',
-    styles: './src/scss/base.scss',
+    'public/styles': './src/scss/base.scss',
   },
   module: {
     rules: [

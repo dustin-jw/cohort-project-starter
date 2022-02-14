@@ -31,6 +31,8 @@ const layout = ({
 
     <title>${pageTitle}${titleSuffix}</title>
     <meta name="description" content="${description}">
+
+    <link rel="stylesheet" href="/public/styles.css">
   </head>
   <body ${bodyAttributes}>
     ${header}
