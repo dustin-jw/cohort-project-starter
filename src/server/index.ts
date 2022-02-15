@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express';
-import { home, math } from '../pages';
+import { home, math, notFound } from '../pages';
 import {
   add, subtract, multiply, divide,
 } from '../js/arithmetic';
@@ -51,6 +51,10 @@ app.get('/divide/:a/:b', (request: Request, response: Response) => {
   } catch (error) {
     response.status(400).send(getErrorMessage(error));
   }
+});
+
+app.get('*', (request: Request, response: Response) => {
+  response.status(404).send(notFound());
 });
 
 app.listen(PORT, HOST);
