@@ -3,7 +3,7 @@ import { home, math, notFound } from '../pages';
 import {
   add, subtract, multiply, divide,
 } from '../js/utilities/arithmetic';
-import paramsToNumbers from './paramsToNumbers';
+import formatParams from './formatParams';
 import getErrorMessage from '../js/utilities/getErrorMessage';
 
 const PORT = 8080;
@@ -17,37 +17,28 @@ app.get('/', (request: Request, response: Response) => {
   response.send(home());
 });
 
-app.get('/add/:a/:b', (request: Request, response: Response) => {
+app.get('/:operation/:a/:b', (request: Request, response: Response) => {
   try {
-    const { a, b } = paramsToNumbers(request.params);
-    response.send(math('add', `${a} + ${b} = ${add(a, b)}`));
-  } catch (error) {
-    response.status(400).send(getErrorMessage(error));
-  }
-});
+    let result = '';
+    const { operation, a, b } = formatParams(request.params);
 
-app.get('/subtract/:a/:b', (request: Request, response: Response) => {
-  try {
-    const { a, b } = paramsToNumbers(request.params);
-    response.send(math('subtract', `${a} - ${b} = ${subtract(a, b)}`));
-  } catch (error) {
-    response.status(400).send(getErrorMessage(error));
-  }
-});
-
-app.get('/multiply/:a/:b', (request: Request, response: Response) => {
-  try {
-    const { a, b } = paramsToNumbers(request.params);
-    response.send(math('multiply', `${a} &times; ${b} = ${multiply(a, b)}`));
-  } catch (error) {
-    response.status(400).send(getErrorMessage(error));
-  }
-});
-
-app.get('/divide/:a/:b', (request: Request, response: Response) => {
-  try {
-    const { a, b } = paramsToNumbers(request.params);
-    response.send(math('divide', `${a} &divide; ${b} = ${divide(a, b)}`));
+    switch (operation) {
+      case 'add':
+        result = `${a} + ${b} = ${add(a, b)}`;
+        break;
+      case 'subtract':
+        result = `${a} - ${b} = ${subtract(a, b)}`;
+        break;
+      case 'multiply':
+        result = `${a} &times; ${b} = ${multiply(a, b)}`;
+        break;
+      case 'divide':
+        result = `${a} &divide; ${b} = ${divide(a, b)}`;
+        break;
+      default:
+        break;
+    }
+    response.send(math(operation, result));
   } catch (error) {
     response.status(400).send(getErrorMessage(error));
   }
