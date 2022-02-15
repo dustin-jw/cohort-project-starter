@@ -7,7 +7,7 @@ module.exports = {
   target: 'node',
   entry: {
     server: './src/server/index.ts',
-    'public/home.js': './src/js/home.ts',
+    'public/home': './src/js/home.ts',
     'public/styles': './src/scss/base.scss',
   },
   module: {
