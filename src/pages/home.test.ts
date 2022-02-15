@@ -6,6 +6,16 @@ const content = `
   <p>
     Welcome to the home page!
   </p>
+
+  <div>
+    <button type="button" data-increment>
+      Click Me!
+    </button>
+  </div>
+
+  <p>
+    Click Count: <span data-counter>0</span>
+  </p>
 `;
 
 describe('home page', () => {
