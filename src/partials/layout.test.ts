@@ -8,7 +8,7 @@ const defaultLayout = `
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Express Starter | Express Starter</title>
+    <title>Cohort Project Starter | Cohort Project Starter</title>
     <meta name="description" content="This is the page description.">
 
     <link rel="stylesheet" href="/public/styles.css">
@@ -47,7 +47,7 @@ describe('layout', () => {
 
     const title = document.querySelector('title');
 
-    expect(title?.innerHTML).toEqual('Test Title | Express Starter');
+    expect(title?.innerHTML).toEqual('Test Title | Cohort Project Starter');
   });
 
   it('renders a custom description correctly', () => {
@@ -87,7 +87,7 @@ describe('layout', () => {
 
     const title = document.querySelector('title');
 
-    expect(title?.innerHTML).toEqual('Express Starter | Test Suffix');
+    expect(title?.innerHTML).toEqual('Cohort Project Starter | Test Suffix');
   });
 
   it('renders a custom lang attribute correctly', () => {
