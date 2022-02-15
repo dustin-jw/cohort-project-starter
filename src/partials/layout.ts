@@ -1,3 +1,17 @@
+interface LayoutParams {
+  content?: string;
+  pageTitle?: string;
+  description?: string;
+  header?: string;
+  footer?: string;
+  scripts?: string;
+  titleSuffix?: string;
+  lang?: string;
+  htmlAttributes?: string;
+  bodyAttributes?: string;
+  mainAttributes?: string;
+}
+
 const defaultHeader = `<header>
       <p>This is the header.</p>
     </header>`;
@@ -18,7 +32,7 @@ const layout = ({
   htmlAttributes = '',
   bodyAttributes = '',
   mainAttributes = '',
-}) => `
+}: LayoutParams = {}) => `
 <!doctype html>
 
 <html lang="${lang}" ${htmlAttributes}>

@@ -1,33 +1,24 @@
 import layout from './layout';
 
-const defaultLayout = `
-<!doctype html>
-
-<html lang="en" >
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Cohort Project Starter | Cohort Project Starter</title>
-    <meta name="description" content="This is the page description.">
-
-    <link rel="stylesheet" href="/public/styles.css">
-  </head>
-  <body >
-    <header>
-      <p>This is the header.</p>
-    </header>
-    <main ></main>
-    <footer>
-      <p>This is the footer.</p>
-    </footer>
-  </body>
-</html>
-`;
-
 describe('layout', () => {
   it('renders the layout correctly with default parameters', () => {
-    expect(layout({})).toEqual(defaultLayout);
+    const htmlString = layout();
+    document.documentElement.innerHTML = htmlString;
+
+    const main = document.querySelector('main');
+    const title = document.querySelector('title');
+    const description = document.querySelector('meta[name="description"]');
+    const header = document.querySelector('header');
+    const footer = document.querySelector('footer');
+
+    expect(main?.innerHTML).toEqual('');
+    expect(title?.innerHTML).toEqual('Cohort Project Starter | Cohort Project Starter');
+    expect(description?.getAttribute('content')).toEqual('This is the page description.');
+    expect(header?.innerHTML.replace(/\n\s+/g, '')).toContain('<p>This is the header.</p>');
+    expect(footer?.innerHTML.replace(/\n\s+/g, '')).toContain('<p>This is the footer.</p>');
+    expect(htmlString).toContain('<html lang="en" >');
+    expect(htmlString).toContain('<body >');
+    expect(htmlString).toContain('<main >');
   });
 
   it('renders content correctly', () => {
