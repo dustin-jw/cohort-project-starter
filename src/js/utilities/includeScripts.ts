@@ -4,25 +4,24 @@ interface ScriptDefinition {
   asyncDefer?: 'async' | 'defer';
 }
 
-export const moduleType = (type?: 'module' | 'nomodule'): string => {
+export const attribute = (type?: 'module' | 'nomodule' | 'async' | 'defer'): string => {
   let result = '';
 
-  if (type === 'module') {
-    result = ' type="module"';
-  } else if (type === 'nomodule') {
-    result = ' nomodule';
-  }
-
-  return result;
-};
-
-export const nonBlockingType = (asyncDefer?: 'async' | 'defer'): string => {
-  let result = '';
-
-  if (asyncDefer === 'async') {
-    result = ' async';
-  } else if (asyncDefer === 'defer') {
-    result = ' defer';
+  switch (type) {
+    case 'module':
+      result = ' type="module"';
+      break;
+    case 'nomodule':
+      result = ' nomodule';
+      break;
+    case 'async':
+      result = ' async';
+      break;
+    case 'defer':
+      result = ' defer';
+      break;
+    default:
+      break;
   }
 
   return result;
@@ -30,7 +29,7 @@ export const nonBlockingType = (asyncDefer?: 'async' | 'defer'): string => {
 
 const includeScripts = (scripts: Array<ScriptDefinition>): string => (
   scripts.map((script: ScriptDefinition): string => (
-    `<script src="${script.src}"${moduleType(script.type)}${nonBlockingType(script.asyncDefer)}></script>`
+    `<script src="${script.src}"${attribute(script.type)}${attribute(script.asyncDefer)}></script>`
   )).join('')
 );
 

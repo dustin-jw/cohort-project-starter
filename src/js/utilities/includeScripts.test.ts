@@ -1,31 +1,25 @@
-import includeScripts, { moduleType, nonBlockingType } from './includeScripts';
+import includeScripts, { attribute } from './includeScripts';
 
 describe('includeScripts', () => {
-  describe('moduleType', () => {
+  describe('attribute', () => {
     it('returns type="module" for module types', () => {
-      expect(moduleType('module')).toEqual(' type="module"');
+      expect(attribute('module')).toEqual(' type="module"');
     });
 
     it('returns nomodule for nomodule types', () => {
-      expect(moduleType('nomodule')).toEqual(' nomodule');
+      expect(attribute('nomodule')).toEqual(' nomodule');
     });
 
-    it('returns an empty string for non-specified types', () => {
-      expect(moduleType()).toEqual('');
-    });
-  });
-
-  describe('nonBlockingType', () => {
     it('returns async for async scripts', () => {
-      expect(nonBlockingType('async')).toEqual(' async');
+      expect(attribute('async')).toEqual(' async');
     });
 
     it('returns defer for defer scripts', () => {
-      expect(nonBlockingType('defer')).toEqual(' defer');
+      expect(attribute('defer')).toEqual(' defer');
     });
 
     it('returns an empty string for non-specified scripts', () => {
-      expect(nonBlockingType()).toEqual('');
+      expect(attribute()).toEqual('');
     });
   });
 
