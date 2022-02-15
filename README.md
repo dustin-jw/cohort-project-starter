@@ -20,7 +20,11 @@ npm start
 
 To run in production mode:
 ```sh
-npm run docker:up:prod
+docker-compose up
+
+# or to run it in detached mode
+
+docker-compose up -d
 ```
 
 To lint and run tests:
