@@ -1,12 +1,14 @@
-import updateCount from './updateCount';
+interface UpdateFunction {
+  (count: number): void;
+}
 
-const initializeButtonListener = () => {
+const initializeButtonListener = (callback: UpdateFunction) => {
   let count = 0;
 
   const button = document.querySelector('[data-increment]');
   button?.addEventListener('click', () => {
     count += 1;
-    updateCount(count);
+    callback(count);
   });
 };
 
