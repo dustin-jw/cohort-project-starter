@@ -12,6 +12,7 @@ const layout = ({
   description = 'This is the page description.',
   header = defaultHeader,
   footer = defaultFooter,
+  scripts = '',
   titleSuffix = ' | Cohort Project Starter',
   lang = 'en',
   htmlAttributes = '',
@@ -34,6 +35,7 @@ const layout = ({
     ${header}
     <main ${mainAttributes}>${content}</main>
     ${footer}
+    ${scripts}
   </body>
 </html>
 `;
