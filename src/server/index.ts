@@ -2,9 +2,9 @@ import express, { Request, Response } from 'express';
 import { home, math, notFound } from '../pages';
 import {
   add, subtract, multiply, divide,
-} from '../js/arithmetic';
+} from '../js/utilities/arithmetic';
 import paramsToNumbers from './paramsToNumbers';
-import getErrorMessage from '../js/getErrorMessage';
+import getErrorMessage from '../js/utilities/getErrorMessage';
 
 const PORT = 8080;
 const HOST = '0.0.0.0';

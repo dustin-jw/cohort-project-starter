@@ -1,5 +1,5 @@
 import layout from '../partials/layout';
-import capitalize from '../js/capitalize';
+import capitalize from '../js/utilities/capitalize';
 
 const mathPageContent = (title: string, equation: string): string => `
   <h1>${title}</h1>
