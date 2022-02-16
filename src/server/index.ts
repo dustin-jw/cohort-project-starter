@@ -1,4 +1,6 @@
 import express, { Request, Response } from 'express';
+import Rollbar from 'rollbar';
+import { config } from 'dotenv';
 import { home, math, notFound } from '../pages';
 import {
   add, subtract, multiply, divide,
@@ -6,10 +8,19 @@ import {
 import formatParams from './formatParams';
 import getErrorMessage from '../js/utilities/getErrorMessage';
 
+config();
+
 const PORT = 8080;
 const HOST = '0.0.0.0';
 
 const app = express();
+const rollbar = new Rollbar({
+  accessToken: process.env.ROLLBAR_ACCESS_TOKEN,
+  captureUncaught: true,
+  captureUnhandledRejections: true,
+});
+
+rollbar.log('Hello World!');
 
 app.use('/public', express.static('dist/public'));
 
