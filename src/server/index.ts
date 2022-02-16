@@ -18,9 +18,10 @@ const rollbar = new Rollbar({
   accessToken: process.env.ROLLBAR_ACCESS_TOKEN,
   captureUncaught: true,
   captureUnhandledRejections: true,
+  environment: process.env.NODE_ENV,
 });
 
-rollbar.log('Hello World!');
+app.use(rollbar.errorHandler());
 
 app.use('/public', express.static('dist/public'));
 
@@ -51,11 +52,15 @@ app.get('/:operation/:a/:b', (request: Request, response: Response) => {
     }
     response.send(math(operation, result));
   } catch (error) {
-    response.status(400).send(getErrorMessage(error));
+    const errorMessage = getErrorMessage(error);
+    rollbar.error(errorMessage, request);
+
+    response.status(400).send(getErrorMessage(errorMessage));
   }
 });
 
 app.get('*', (request: Request, response: Response) => {
+  rollbar.warn('Resource not found', request);
   response.status(404).send(notFound());
 });
 
