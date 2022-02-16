@@ -16,6 +16,7 @@
     "lint:css": "stylelint 'src/scss/**/*.scss' --color --formatter verbose",
     "lint:js": "eslint . --ext .js,.ts",
     "test": "jest --config=jest.config.js",
+    "test:ci": "npm run test -- --coverage",
     "clean": "rimraf dist"
   },
   "keywords": [],
