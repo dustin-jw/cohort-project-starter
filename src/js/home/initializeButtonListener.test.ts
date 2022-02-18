@@ -16,7 +16,8 @@ describe('initializeButtonListener', () => {
     const button = document.querySelector('button');
     button?.click();
 
-    expect(updateCount).toHaveBeenCalled();
+    expect(updateCount).toHaveBeenCalledTimes(1);
+    expect(updateCount).toHaveBeenCalledWith(1);
   });
 
   it('does nothing if the button does not exist when initialized', () => {

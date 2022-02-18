@@ -1,10 +1,12 @@
+import includeScripts, { ScriptDefinition } from '../js/utilities/includeScripts';
+
 interface LayoutParams {
   content?: string;
   pageTitle?: string;
   description?: string;
   header?: string;
   footer?: string;
-  scripts?: string;
+  scripts?: ScriptDefinition[];
   titleSuffix?: string;
   lang?: string;
   htmlAttributes?: string;
@@ -26,7 +28,7 @@ const layout = ({
   description = 'This is the page description.',
   header = defaultHeader,
   footer = defaultFooter,
-  scripts = '',
+  scripts = [],
   titleSuffix = ' | Cohort Project Starter',
   lang = 'en',
   htmlAttributes = '',
@@ -49,7 +51,7 @@ const layout = ({
     ${header}
     <main ${mainAttributes}>${content}</main>
     ${footer}
-    ${scripts}
+    ${includeScripts(scripts)}
   </body>
 </html>
 `;

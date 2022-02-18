@@ -1,4 +1,4 @@
-interface ScriptDefinition {
+export interface ScriptDefinition {
   src: string;
   type?: 'module' | 'nomodule';
   asyncDefer?: 'async' | 'defer';
@@ -21,7 +21,6 @@ export const attribute = (type?: 'module' | 'nomodule' | 'async' | 'defer'): str
       result = ' defer';
       break;
     default:
-      break;
   }
 
   return result;

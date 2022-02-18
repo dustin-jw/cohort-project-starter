@@ -10,12 +10,14 @@ describe('layout', () => {
     const description = document.querySelector('meta[name="description"]');
     const header = document.querySelector('header');
     const footer = document.querySelector('footer');
+    const scripts = document.querySelectorAll('script');
 
     expect(main?.innerHTML).toEqual('');
     expect(title?.innerHTML).toEqual('Cohort Project Starter | Cohort Project Starter');
     expect(description?.getAttribute('content')).toEqual('This is the page description.');
     expect(header?.innerHTML.replace(/\n\s+/g, '')).toContain('<p>This is the header.</p>');
     expect(footer?.innerHTML.replace(/\n\s+/g, '')).toContain('<p>This is the footer.</p>');
+    expect(scripts.length).toEqual(0);
     expect(htmlString).toContain('<html lang="en" >');
     expect(htmlString).toContain('<body >');
     expect(htmlString).toContain('<main >');

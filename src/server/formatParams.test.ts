@@ -19,6 +19,10 @@ describe('formatParams', () => {
     }).toThrow('a must be a number');
 
     expect(() => {
+      formatParams({ operation: 'divide', a: 'foo', b: 'bar' });
+    }).toThrow('a must be a number');
+
+    expect(() => {
       formatParams({ operation: 'nthPower', a: '2', b: '2' });
     }).toThrow('operation must be one of "add", "subtract", "multiply", or "divide"');
   });

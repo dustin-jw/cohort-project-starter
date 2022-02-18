@@ -1,5 +1,4 @@
 import layout from '../partials/layout';
-import includeScripts from '../js/utilities/includeScripts';
 
 const homePageContent = (): string => `
   <h1>Hello World!</h1>
@@ -21,11 +20,11 @@ const homePageContent = (): string => `
 
 const home = () => {
   const content = homePageContent();
-  const scripts = includeScripts([
+  const scripts = [
     {
       src: '/public/home.js',
     },
-  ]);
+  ];
 
   return layout({
     content,
