@@ -1,4 +1,4 @@
-import { notFoundContent } from '.';
+import { notFound, notFoundContent } from '.';
 
 const content = `
   <h1>404 Not Found</h1>
@@ -12,7 +12,20 @@ const content = `
 `;
 
 describe('404 page', () => {
-  it('renders the 404 page correctly', () => {
-    expect(notFoundContent()).toEqual(content);
+  describe('notFoundContent', () => {
+    it('renders the 404 page content correctly', () => {
+      expect(notFoundContent()).toEqual(content);
+    });
+  });
+
+  describe('notFound', () => {
+    it('renders the 404 page correctly', () => {
+      document.documentElement.innerHTML = notFound();
+      const title = document.querySelector('title');
+      const description = document.querySelector('meta[name="description"]');
+
+      expect(title?.innerHTML).toEqual('404 Not Found | Cohort Project Starter');
+      expect(description?.getAttribute('content')).toEqual("We couldn't find what you were looking for.");
+    });
   });
 });

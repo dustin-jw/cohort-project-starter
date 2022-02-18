@@ -1,4 +1,4 @@
-import { homePageContent } from '.';
+import { home, homePageContent } from '.';
 
 const content = `
   <h1>Hello World!</h1>
@@ -19,7 +19,22 @@ const content = `
 `;
 
 describe('home page', () => {
-  it('renders the home page correctly', () => {
-    expect(homePageContent()).toEqual(content);
+  describe('homePageContent', () => {
+    it('renders the home page content correctly', () => {
+      expect(homePageContent()).toEqual(content);
+    });
+  });
+
+  describe('home', () => {
+    it('renders the home page correctly', () => {
+      document.documentElement.innerHTML = home();
+      const title = document.querySelector('title');
+      const description = document.querySelector('meta[name="description"]');
+      const script = document.querySelector('script');
+
+      expect(title?.innerHTML).toEqual('Home | Cohort Project Starter');
+      expect(description?.getAttribute('content')).toEqual('This is the home page.');
+      expect(script?.getAttribute('src')).toEqual('/public/home.js');
+    });
   });
 });
