@@ -4,12 +4,10 @@ Use this template for projects using Express to serve up basic content.
 
 ## Getting Started
 
-Clone this repo or [generate a new repo using this template](https://github.com/dustin-jw/cohort-project-starter/generate). Then, install dependencies and build your docker image.
+Clone this repo or [generate a new repo using this template](https://github.com/dustin-jw/cohort-project-starter/generate). Then, install dependencies and choose whether to run in development or production mode.
 
 ```sh
-npm install
-
-docker-compose build
+npm ci
 ```
 
 To run in development mode:
