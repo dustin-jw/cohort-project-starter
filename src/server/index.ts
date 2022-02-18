@@ -10,8 +10,7 @@ import getErrorMessage from '../js/utilities/getErrorMessage';
 
 config();
 
-const PORT = 8080;
-const HOST = '0.0.0.0';
+const PORT = process.env.PORT || 8080;
 
 const app = express();
 const rollbar = new Rollbar({
@@ -64,7 +63,7 @@ app.get('*', (request: Request, response: Response) => {
   response.status(404).send(notFound());
 });
 
-app.listen(PORT, HOST);
+app.listen(PORT);
 
 // eslint-disable-next-line no-console
-console.log(`Running on http://${HOST}:${PORT}`);
+console.log(`Running on port ${PORT}`);
