@@ -1,6 +1,6 @@
 import express from 'express';
-import Rollbar from 'rollbar';
 import { config } from 'dotenv';
+import rollbar from './rollbar';
 import { home, math, notFound } from './routes';
 
 config();
@@ -8,12 +8,6 @@ config();
 const PORT = process.env.PORT || 8080;
 
 const app = express();
-const rollbar = new Rollbar({
-  accessToken: process.env.ROLLBAR_ACCESS_TOKEN,
-  captureUncaught: true,
-  captureUnhandledRejections: true,
-  environment: process.env.NODE_ENV,
-});
 
 app.use(rollbar.errorHandler());
 
@@ -21,9 +15,9 @@ app.use('/public', express.static('dist/public'));
 
 app.get('/', home);
 
-app.get('/:operation/:a/:b', math(rollbar));
+app.get('/:operation/:a/:b', math);
 
-app.get('*', notFound(rollbar));
+app.get('*', notFound);
 
 app.listen(PORT);
 

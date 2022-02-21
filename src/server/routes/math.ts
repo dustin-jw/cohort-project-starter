@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import Rollbar from 'rollbar';
+import rollbar from '../rollbar';
 import formatParams from '../formatParams';
 import {
   add, subtract, multiply, divide,
@@ -7,7 +7,7 @@ import {
 import getErrorMessage from '../../js/utilities/getErrorMessage';
 import { math as mathPage } from '../../pages';
 
-const math = (rollbar: Rollbar) => (request: Request, response: Response) => {
+const math = (request: Request, response: Response) => {
   try {
     let result = '';
     const { operation, a, b } = formatParams(request.params);
