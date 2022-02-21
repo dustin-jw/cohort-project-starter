@@ -9,26 +9,23 @@ import { math as mathPage } from '../../pages';
 
 const math = (request: Request, response: Response) => {
   try {
-    let result = '';
     const { operation, a, b } = formatParams(request.params);
 
     switch (operation) {
       case 'add':
-        result = `${a} + ${b} = ${add(a, b)}`;
+        response.send(mathPage(operation, `${a} + ${b} = ${add(a, b)}`));
         break;
       case 'subtract':
-        result = `${a} - ${b} = ${subtract(a, b)}`;
+        response.send(mathPage(operation, `${a} - ${b} = ${subtract(a, b)}`));
         break;
       case 'multiply':
-        result = `${a} &times; ${b} = ${multiply(a, b)}`;
+        response.send(mathPage(operation, `${a} &times; ${b} = ${multiply(a, b)}`));
         break;
       case 'divide':
-        result = `${a} &divide; ${b} = ${divide(a, b)}`;
+        response.send(mathPage(operation, `${a} &divide; ${b} = ${divide(a, b)}`));
         break;
       default:
-        break;
     }
-    response.send(mathPage(operation, result));
   } catch (error) {
     const errorMessage = getErrorMessage(error);
     rollbar.error(errorMessage, request);
